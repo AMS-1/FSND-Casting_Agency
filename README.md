@@ -2,6 +2,7 @@
 Casting Agency is a company that is responsible for creating movies and managing movies and assigning actors with different roles. there are three different roles which are Assistant role, Director Role and Producer role,all have different permissions to perform actions on database
 
 Here is hosted heroku [Link](https://castingproject.herokuapp.com/)
+  Local Base URL: The local app is hosted at the default http://http://0.0.0.0:8080/
 
 ## Motivation for project 
 
