@@ -1,0 +1,1265 @@
+{
+	"info": {
+		"_postman_id": "bd5a8e38-873f-4363-bcf8-3edbeee36e0f",
+		"name": "Casting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "director",
+			"item": [
+				{
+					"name": "post movie",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const moment = require('moment');",
+									"pm.globals.set(\"timestamp\", moment().format(\"MM/DD/YYYY\"));",
+									"",
+									"",
+									"var current_timestamp = new Date();",
+									"postman.setEnvironmentVariable(\"current_timestamp\", current_timestamp.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Jerry1\",\n    \"release_date\": \"{{current_timestamp}}\",\n   \"actor_id\":2\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/movies",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							]
+						},
+						"description": "create new movie"
+					},
+					"response": []
+				},
+				{
+					"name": "post actor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Sushant singh rajpoot\",\n    \"age\":34,\n    \"gender\": \"Male\"\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors"
+							]
+						},
+						"description": "create new actor "
+					},
+					"response": []
+				},
+				{
+					"name": "get movies",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const moment = require('moment');",
+									"console.log(moment().format())",
+									"pm.globals.set(\"time\", moment().format());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:8080/movies",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							]
+						},
+						"description": "get all movies "
+					},
+					"response": []
+				},
+				{
+					"name": "get movie detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors/2/details",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors",
+								"2",
+								"details"
+							]
+						},
+						"description": "get movie detail with given id"
+					},
+					"response": []
+				},
+				{
+					"name": "get  actors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors"
+							]
+						},
+						"description": "get all actors"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch movie",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Patched movie\",\n   \n    \"actor_id\": 2\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/movies/1",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"1"
+							]
+						},
+						"description": "edit movie with given id"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch actor",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Sushant singh rajpoot\",\n    \"age\": 34,\n    \"gender\": \"male\"\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors/1",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors",
+								"1"
+							]
+						},
+						"description": "edit actors with given id"
+					},
+					"response": []
+				},
+				{
+					"name": "delete  movie",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/movies/2",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"2"
+							]
+						},
+						"description": "delete movie with given id"
+					},
+					"response": []
+				},
+				{
+					"name": "delete actors",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors/1",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors",
+								"1"
+							]
+						},
+						"description": "delete actor with given id"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJhU1ZlUFRRaXBFX2hVd2hNRUFqUyJ9.eyJpc3MiOiJodHRwczovL3RhZ2FkaXlhLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZWU3NWQ0ODBmZjUwMjAwMTM3ZjgxNGMiLCJhdWQiOiJjYXN0aW5nIiwiaWF0IjoxNTkyNDk3MzAyLCJleHAiOjE1OTI1ODM3MDEsImF6cCI6IjZzbkNUcXdVZFBKVzJNRExmSlBsOGFtcHAzWWVJUkpjIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiLCJwYXRjaDphY3RvcnMiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyJdfQ.Pg-FPnUQCSRyC_b92MqD0PbXe9sPjw1wIbhjgAudcPGtNkVPmeIGGkKj9AsUbHyq2OMbjhAacT3PIJKRuBYPCtGDDJ9S8kZ_jFAMXR3OF6ZH6ZM8cuMvb8F4PkJNtE5z9Rdl2gKw2nveqCg2haFIdpU5arEku-qMkERPAMR_JRlqP_uCNLO1gVKpk-GDPySnguRPpm8fFPFCbLnIqTW0h2GUEtWGJNglxEQmtYvu9Dq7DxxeOmR8JBizR0c8_56mpAyGlZR1G656is4f994fazFLcTVylHbBt5pXDlcqT4YTI05j6dgfu5u3FNWV-6zn_Va3XeWFVqwpXV-2TgUyRg",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Producer",
+			"item": [
+				{
+					"name": "Post actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"sapna pabbi\",\n    \"age\":28,\n    \"gender\": \"Female\"\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors"
+							]
+						},
+						"description": "create new actor"
+					},
+					"response": []
+				},
+				{
+					"name": "post movie",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const moment = require('moment');",
+									"pm.globals.set(\"timestamp\", moment().format(\"MM/DD/YYYY\"));",
+									"",
+									"",
+									"var current_timestamp = new Date();",
+									"postman.setEnvironmentVariable(\"current_timestamp\", current_timestamp.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Inside Age\",\n    \"release_date\": \"{{current_timestamp}}\",\n   \"actor_id\":2\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/movies",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							]
+						},
+						"description": "create new movie"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"RanVeer\",\n    \"age\": 29,\n    \"gender\": \"male\"\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors/2",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors",
+								"2"
+							]
+						},
+						"description": "edit actors with given id"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Inaside age 2\"\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/movies/2",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"2"
+							]
+						},
+						"description": "edit movie with given id"
+					},
+					"response": []
+				},
+				{
+					"name": "get Movies",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const moment = require('moment');",
+									"console.log(moment().format())",
+									"pm.globals.set(\"time\", moment().format());"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:8080/movies",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							]
+						},
+						"description": "get all movies"
+					},
+					"response": []
+				},
+				{
+					"name": "get actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors"
+							]
+						},
+						"description": "get all actors"
+					},
+					"response": []
+				},
+				{
+					"name": "get movie details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors/4/details",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors",
+								"4",
+								"details"
+							]
+						},
+						"description": "get movie detail with given id"
+					},
+					"response": []
+				},
+				{
+					"name": "delete Movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/movies/2",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"2"
+							]
+						},
+						"description": "delete movie with given id"
+					},
+					"response": []
+				},
+				{
+					"name": "delete actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors/3",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors",
+								"3"
+							]
+						},
+						"description": "delete actor with given id"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJhU1ZlUFRRaXBFX2hVd2hNRUFqUyJ9.eyJpc3MiOiJodHRwczovL3RhZ2FkaXlhLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZWU3NWUyOTkyMmQxMzAwMTkxODdmZWMiLCJhdWQiOiJjYXN0aW5nIiwiaWF0IjoxNTkyNDk3Mzg4LCJleHAiOjE1OTI1ODM3ODcsImF6cCI6IjZzbkNUcXdVZFBKVzJNRExmSlBsOGFtcHAzWWVJUkpjIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3JzIiwicGF0Y2g6bW92aWVzIiwicG9zdDphY3RvcnMiLCJwb3N0Om1vdmllcyJdfQ.mQQXvfqBv7dCpSMryVwtxXonCFJ92KzRHd-w4AK2ZPkr3WCBUHjEzB9_IR0Vc3hE29l5fN3ZS_BFc79NlGUp4yL-p_06ipyFVw5I8C6weRQPhBN75skbdmHwFpPdOany51XI3kDkhZqzXjew6UdkBhVCLToN2exxf-JjgwN5msJOKgzZ1nm_PVTYzyL2xIgh1_qo2NPQs9jz6K1xKhU_-S-Pcf1AHnVmRKi7RKba8vBpzvNZVIvc-TCrMGuZZcvcrb1oU3nxQ4hiEHJmc0U6k77N6VbmakYKho-PJ-0HUK86HwBVYrkb1kMtqxKmh8J3GV48yMVsPxMjV-lfV_dpHw",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Assistant",
+			"item": [
+				{
+					"name": "post actor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Sushant singh rajpoot\",\n    \"age\":34,\n    \"gender\": \"Male\"\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors"
+							]
+						},
+						"description": "create new actor"
+					},
+					"response": []
+				},
+				{
+					"name": "post movie",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const moment = require('moment');",
+									"pm.globals.set(\"timestamp\", moment().format(\"MM/DD/YYYY\"));",
+									"",
+									"",
+									"var current_timestamp = new Date();",
+									"postman.setEnvironmentVariable(\"current_timestamp\", current_timestamp.toISOString());"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"URI\",\n    \"release_date\": \"{{current_timestamp}}\",\n   \"actor_id\":3\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/movies",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							]
+						},
+						"description": "create new movie"
+					},
+					"response": []
+				},
+				{
+					"name": "get  actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors"
+							]
+						},
+						"description": "get all actors "
+					},
+					"response": []
+				},
+				{
+					"name": "get Movies",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const moment = require('moment');",
+									"console.log(moment().format())",
+									"pm.globals.set(\"time\", moment().format());"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:8080/movies",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"movies"
+							]
+						},
+						"description": "get all movies"
+					},
+					"response": []
+				},
+				{
+					"name": "get movie detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors/2/details",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors",
+								"2",
+								"details"
+							]
+						},
+						"description": "get movie detail with given id"
+					},
+					"response": []
+				},
+				{
+					"name": "get actor detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors/2/details",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors",
+								"2",
+								"details"
+							]
+						},
+						"description": "get actor detail with given id"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Patched Movie\",\n   \n    \"actor_id\": 2\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/movies/2",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"2"
+							]
+						},
+						"description": "edit movie with given id"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Salman Khan\",\n    \"age\": 55,\n    \"gender\": \"male\"\n  }"
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors/1",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors",
+								"1"
+							]
+						},
+						"description": "edit actors with given id"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/actors/1",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"actors",
+								"1"
+							]
+						},
+						"description": "delete actors with given id"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/movies/1",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								"1"
+							]
+						},
+						"description": "delete movie with given id"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkJhU1ZlUFRRaXBFX2hVd2hNRUFqUyJ9.eyJpc3MiOiJodHRwczovL3RhZ2FkaXlhLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZWU3NWM3MTBmZjUwMjAwMTM3ZjgwMzIiLCJhdWQiOiJjYXN0aW5nIiwiaWF0IjoxNTkyNDk3MjIwLCJleHAiOjE1OTI1ODM2MTksImF6cCI6IjZzbkNUcXdVZFBKVzJNRExmSlBsOGFtcHAzWWVJUkpjIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyJdfQ.U7iBjulyXOQnvFjzXRi4EZ94QCGtfH6HKPLVwfeEtWT0UoHLcIzwpOSfy-vwi-olrbvZd5ptElqUV33sDNDk9486fwZCeGAXlpSucfv3cCJTOp0_ts-ZVJpy-QVlNDSU04JJhLpK7wxhAnBhHb386vKn6LDtGw6f9TgFeTn1Td2C0iwdFFhsa_l4MqPG-pgLWco0pPMDqaKPvKD1NX1d5ErsK_Beh3FE5cYleSZoKFApy48t5zVkXoYK6uL1kPnwJ8z7CWKeVIhIDN7CodRRkQDjN3_uxcevbMR8nM1K1OOwPKz8j-xix0b_mq8ybmMyKGrXiU5jvam49xTqzZvOfQ",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
