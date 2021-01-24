@@ -1,7 +1,7 @@
 # Casting Agency
 Casting Agency is a company that is responsible for creating movies and managing movies and assigning actors with different roles. there are three different roles which are Assistant role, Director Role and Producer role,all have different permissions to perform actions on database
 
-Here is hosted heroku [Link]()
+Here is hosted heroku [Link](https://castingproject.herokuapp.com/)
 
 ## Motivation for project 
 
@@ -21,11 +21,7 @@ Install letest version of python3 [here] (https://www.python.org/downloads/)
 
 You can create python virtual environment.Instruction for create virtual enviornment is [here] (https://docs.python.org/3/tutorial/venv.html)
 
-Example in my code :
 
-conda create -n myenv python=3.6
-
-source activate myenv
 
 For python virtual enviornment setup you can do following in your terminal
 
