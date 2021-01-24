@@ -14,10 +14,10 @@ from datetime import date
 
 # Use production database.
 
-database_path = os.environ['DATABASE_URL']
+#database_path = os.environ['DATABASE_URL']
 
 # If you want run locally you can give path as follow.
-#database_path = "postgres://{}:{}@{}/{}".format('postgres','1234','localhost:5432', 'casting')
+database_path = "postgres://{}:{}@{}/{}".format('postgres','1234','localhost:5432', 'capstone')
 db = SQLAlchemy()
 
 def setup_db(app, database_path=database_path):
