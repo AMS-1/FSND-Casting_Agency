@@ -6,10 +6,16 @@ Here is hosted heroku [Link](https://castingproject.herokuapp.com/)
 
 ## Motivation for project 
 
-This is the capstone project for Full Stack Nano Degree program by Udacity
+This is the capstone project for Full Stack Nano Degree program by Udacity It covers following technical topics in the app:
+
+1-Database modeling with postgres & sqlalchemy (see models.py)
+2-API to performance CRUD Operations on database with Flask (see app.py)
+3-Automated testing with Unittest (see test_app)
+4-Authorization & Role based Authentification with Auth0 (see auth.py)
+5-Deployment on Heroku
 
 
-```
+
 
 ## Project Dependencies
 
@@ -39,8 +45,10 @@ pip install -r requirements.txt
 ```
 
 
-
-
+#### To execute tests, run the below
+```
+python3 unit_test.py
+```
 #### Run server      
 
 ```
