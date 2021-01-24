@@ -18,10 +18,8 @@ Install letest version of python3 [here] (https://www.python.org/downloads/)
 
 #### Virtual Enviornment
 
-In my code i have created conda virtual enviornment because of some issues in my machine.
-check [here](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) to create virtual enviornment in conda
 
-you can create python virtual environment.Instruction for create virtual enviornment is [here] (https://docs.python.org/3/tutorial/venv.html)
+You can create python virtual environment.Instruction for create virtual enviornment is [here] (https://docs.python.org/3/tutorial/venv.html)
 
 Example in my code :
 
