@@ -265,14 +265,4 @@ Returns:
 
 
 ```
-
-
-
-    
-   
-
-
-
-
-
-
+You have reached the end of this documentation, Thank You..
