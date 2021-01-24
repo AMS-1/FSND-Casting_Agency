@@ -1,24 +1,27 @@
-#----------------
+# ----------------
 # Imports
-#----------------
+# ----------------
 
 import os
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date
 import json
-from sqlalchemy import DateTime, ForeignKey,Table
+from sqlalchemy import DateTime, ForeignKey, Table
 from datetime import date
 
 
-# Database Setup 
+# Database Setup
 
 # Use production database.
 
 database_path = os.environ['DATABASE_URL']
-
+"""
 # If you want run locally you can give path as follow.
-#database_path = "postgres://{}:{}@{}/{}".format('postgres','1234','localhost:5432', 'capstone')
+#database_path = "postgres://{}:{}@{}/{}".format
+('postgres','1234','localhost:5432','capstone')
+"""
 db = SQLAlchemy()
+
 
 def setup_db(app, database_path=database_path):
     '''Binds a Flask Application and a SQLAlchemy '''
@@ -28,8 +31,9 @@ def setup_db(app, database_path=database_path):
     db.init_app(app)
     db.create_all()
 
+
 def db_drop_create_all():
-    '''drop existing database and create new fresh database'''   
+    '''drop existing database and create new fresh database'''
     db.drop_all()
     db.create_all()
     create_records()
@@ -42,10 +46,10 @@ class Movie(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
     release_date = db.Column(db.DateTime(), nullable=False)
-   
+
     def __repr__(self):
         return f"<Movie id and title is  {self.id} {self.title}>"
-        
+
     def insert(self):
         db.session.add(self)
         db.session.commit()
@@ -61,10 +65,11 @@ class Movie(db.Model):
         return {
             'id': self.id,
             'title': self.title,
-            'release_date': self.release_date,     
+            'release_date': self.release_date,
         }
 
-# Actors Model 
+# Actors Model
+
 
 class Actor(db.Model):
     __tablename__ = 'actors'
@@ -73,7 +78,7 @@ class Actor(db.Model):
     name = db.Column(db.String(50), nullable=False)
     age = db.Column(db.Integer, nullable=False)
     gender = db.Column(db.String, nullable=False)
-    
+
     def __repr__(self):
         return f"<Actor id and name is  {self.id} {self.name}>"
 
@@ -93,7 +98,6 @@ class Actor(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-
     def attributes(self):
         return {
             'id': self.id,
@@ -107,27 +111,26 @@ def create_records():
     '''initialize own records'''
 
     # Create record for new movie
-    new_movie_1 = Movie(title='Suit',release_date=date.today())
-        
-    new_movie_2 = Movie(title='Lost',release_date=date.today())
-        
-    new_movie_3 = Movie(title='Last of us',release_date=date.today())
+    new_movie_1 = Movie(title='Suit', release_date=date.today())
 
-    new_movie_4 = Movie(title='Game of End',release_date=date.today())
-    
+    new_movie_2 = Movie(title='Lost', release_date=date.today())
+
+    new_movie_3 = Movie(title='Last of us', release_date=date.today())
+
+    new_movie_4 = Movie(title='Game of End', release_date=date.today())
+
     new_movie_1.insert()
     new_movie_2.insert()
     new_movie_3.insert()
     new_movie_4.insert()
 
+    new_actor_1 = Actor(name='Abdulaziz MS', gender='Male', age=31)
 
-    new_actor_1 = Actor(name='Abdulaziz MS',gender='Male',age=31)
+    new_actor_2 = Actor(name='Talal Ahmad', gender='Male', age=40)
 
-    new_actor_2 = Actor(name='Talal Ahmad',gender='Male',age=40)
+    new_actor_3 = Actor(name='Bader Khaled', gender='Male', age=45)
 
-    new_actor_3 = Actor(name='Bader Khaled',gender='Male',age=45)
-
-    new_actor_4 = Actor(name='Tomy Tomy',gender='Male',age=60)
+    new_actor_4 = Actor(name='Tomy Tomy', gender='Male', age=60)
 
     new_actor_1.insert()
     new_actor_2.insert()
@@ -135,5 +138,3 @@ def create_records():
     new_actor_4.insert()
 
     db.session.commit()
-
-
